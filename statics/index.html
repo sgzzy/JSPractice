@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>JSPractice</title>
+    <style>
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      a {
+        color: #ffffff;
+        text-decoration: none;
+      }
+      .demo {
+        font-size: 15px;
+        color: #fff;
+        margin: 0 auto;
+        padding: 5px;
+        width: 350px;
+        border: 15px solid #eeeeee;
+        border-radius: 10px;
+      }
+      .demo .lesson {
+        background: #99cc00;
+        border-top: 1px solid #ffffff;
+        overflow: hidden;
+      }
+      .demo .lesson.active {
+      }
+      .demo .lesson:first-child {
+        border-top: none;
+      }
+      .demo .lesson .title {
+        cursor: pointer;
+        padding-left: 1em;
+        font-size: 15px;
+        margin: 0;
+        width: 350px;
+        height: 2em;
+        line-height:2em;
+      }
+      .demo .lesson.active .title {
+        background: #0099ff;
+      }
+      .demo .lesson .list {
+        height: 0;
+        overflow: hidden;
+        font-size: 14px;
+        -webkit-transition: height .5s linear; -moz-transition: height .5s linear; -o-transition: height .5s linear; transition: height .5s linear;
+      }
+      .demo .lesson.active .list {
+        -webkit-transition: height .5s linear; -moz-transition: height .5s linear; -o-transition: height .5s linear; transition: height .5s linear;
+        background-color: #77ccff;
+      }
+      .demo .lesson .list .list-item {
+        padding-left: 15px;
+        border-top: 1px solid #ffffff;
+        height: 2em;
+        line-height: 2em;
+      }
+    </style>
+    <script type="text/javascript" src="getnode.js"></script>
+    <script type="text/javascript" src="getcss.js"></script>
+    <script type="text/javascript" src="eventUtil.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+  </head>
+  <body>
+    <div class="demo">
+      <div class="lesson">
+        <h2 class="title">第一课 (6)</h2>
+        <ul class="list">
+          <li class="list-item"><a href="#">1) 控制Div属性</a></li>
+          <li class="list-item"><a href="#">2) 网页换肤</a></li>
+          <li class="list-item"><a href="#">3) 函数接收参数并弹出</a></li>
+          <li class="list-item"><a href="#">4) 用循环将三个Div变成红色</a></li>
+          <li class="list-item"><a href="#">5) 鼠标移入/移出改变样式</a></li>
+          <li class="list-item"><a href="#">6) 记住密码提示框</a></li>
+        </ul>
+      </div>
+      <div class="lesson">
+        <h2 class="title">第二课 (12)</h2>
+        <ul class="list">
+          <li class="list-item"><a href="#">1) 百度输入法</a></li>
+          <li class="list-item"><a href="#">2) 点击Div，显示其innerHTML</a></li>
+          <li class="list-item"><a href="#">3) 求出数组中所有数字的和</a></li>
+          <li class="list-item"><a href="#">4) 弹出层效果</a></li>
+          <li class="list-item"><a href="#">5) 函数传参，改变Div任意属性的值</a></li>
+          <li class="list-item"><a href="#">6) 图片列表：鼠标移入/移出改变图片透明度</a></li>
+          <li class="list-item"><a href="#">7) 简易选项卡</a></li>
+          <li class="list-item"><a href="#">8) 简易JS年历</a></li>
+          <li class="list-item"><a href="#">9) 单一按钮显示/隐藏一播放列表收缩展开</a></li>
+          <li class="list-item"><a href="#">10) 提示框效果</a></li>
+          <li class="list-item"><a href="#">11) 鼠标移过，修改图片路径</a></li>
+          <li class="list-item"><a href="#">12) 复选框（checkbox）全选/全不选/返选</a></li>
+        </ul>
+      </div>
+      <div class="lesson">
+        <h2 class="title">第三课 (9)</h2>
+        <ul class="list">
+          <li class="list-item"><a href="#">1) 用typeof查看数据类型</a></li>
+          <li class="list-item"><a href="#">2) 用parseInt解析数字，并求和</a></li>
+          <li class="list-item"><a href="#">3) 累加按钮，自加1</a></li>
+          <li class="list-item"><a href="#">4) 输入两个数字，比较大小</a></li>
+          <li class="list-item"><a href="#">5) 页面加载后累加，自加1</a></li>
+          <li class="list-item"><a href="#">6) 判断数字是否为两位数</a></li>
+          <li class="list-item"><a href="#">7) 网页计算器</a></li>
+          <li class="list-item"><a href="#">8) 简易网页时钟</a></li>
+          <li class="list-item"><a href="#">9) 倒计时时钟（100秒）</a></li>
+        </ul>
+      </div>
+      <div class="lesson">
+        <h2 class="title">第四课 (9)</h2>
+        <ul class="list">
+          <li class="list-item"><a href="#">1) setTimeout应用</a></li>
+          <li class="list-item"><a href="#">2) 自动播放一幻灯片效果</a></li>
+          <li class="list-item"><a href="#">3) 自动改变方向一幻灯片效果</a></li>
+          <li class="list-item"><a href="#">4) agruments应用一求出函数参数的总合</a></li>
+          <li class="list-item"><a href="#">5) css函数一设置/读取对象的属性</a></li>
+          <li class="list-item"><a href="#">6) 当前输入框高亮显示</a></li>
+          <li class="list-item"><a href="#">7) 数组练习：各种数组方法的使用</a></li>
+          <li class="list-item"><a href="#">8) 事件练习：封装兼容性添加、删除事件的函数</a></li>
+          <li class="list-item"><a href="#">9) 星级评分系统</a></li>
+        </ul>
+      </div>
+      <div class="lesson">
+        <h2 class="title">第五课 (8)</h2>
+        <ul class="list">
+          <li class="list-item"><a href="#">1) 模拟select控件</a></li>
+          <li class="list-item"><a href="#">2) 点击页面，显示单击的坐标</a></li>
+          <li class="list-item"><a href="#">3) 用户按下键盘，显示keyCode</a></li>
+          <li class="list-item"><a href="#">4) 阻止右键菜单（阻止默认事件）</a></li>
+          <li class="list-item"><a href="#">5) 跟随鼠标移动（大图展示）</a></li>
+          <li class="list-item"><a href="#">6) 自定义右键菜单</a></li>
+          <li class="list-item"><a href="#">7) 用键盘控制Div</a></li>
+          <li class="list-item"><a href="#">8) Div闪烁</a></li>
+        </ul>
+      </div>
+      <div class="lesson">
+        <h2 class="title">第六课 (3)</h2>
+        <ul class="list">
+          <li class="list-item"><a href="#">1) 完美拖拽</a></li>
+          <li class="list-item"><a href="#">2) 仿腾讯微博效果</a></li>
+          <li class="list-item"><a href="#">3) 自定义多级右键菜单</a></li>
+        </ul>
+      </div>
+      <div class="lesson">
+        <h2 class="title">第七课 (3)</h2>
+        <ul class="list">
+          <li class="list-item"><a href="#">1) 自动轮播广告（缓冲效果）</a></li>
+          <li class="list-item"><a href="#">2) 图片切换（Loading效果）</a></li>
+          <li class="list-item"><a href="#">3) 移动效果（按轨迹移动）</a></li>
+        </ul>
+      </div>
+      <div class="lesson">
+        <h2 class="title">第八课 (4)</h2>
+        <ul class="list">
+          <li class="list-item"><a href="#">1) iPhone手机解锁效果</a></li>
+          <li class="list-item"><a href="#">2) 自定义滚动条</a></li>
+          <li class="list-item"><a href="#">3) 拖拽一Clone</a></li>
+          <li class="list-item"><a href="#">4) 拖拽并可以改变大小</a></li>
+        </ul>
+      </div>
+      <div class="lesson">
+        <h2 class="title">第九课 (3)</h2>
+        <ul class="list">
+          <li class="list-item"><a href="#">1) 仿苹果电脑任务栏菜单</a></li>
+          <li class="list-item"><a href="#">2) 拼图小游戏</a></li>
+          <li class="list-item"><a href="#">3) 模拟表单控件</a></li>
+        </ul>
+      </div>
+      <div class="lesson">
+        <h2 class="title">第十课 (14)</h2>
+        <ul class="list">
+          <li class="list-item"><a href="#">1) 为数组添加方法（求和，最大值）</a></li>
+          <li class="list-item"><a href="#">2) 自动轮播广告（面向对象版）</a></li>
+          <li class="list-item"><a href="#">3) 运动框架（面向对象版）</a></li>
+          <li class="list-item"><a href="#">4) 照片墙一多实例演示（面向对象版）</a></li>
+          <li class="list-item"><a href="#">5) 拖拽库（面向对象版）</a></li>
+          <li class="list-item"><a href="#">6) 无缝滚动（面向对象版）</a></li>
+          <li class="list-item"><a href="#">7) 延时加载（面向对象版）</a></li>
+          <li class="list-item"><a href="#">8) 仿腾讯游戏《英雄杀》官网Flash效果</a></li>
+          <li class="list-item"><a href="#">9) 百度有啊通栏展示效果</a></li>
+          <li class="list-item"><a href="#">10) 放烟花效果（面向对象版）</a></li>
+          <li class="list-item"><a href="#">11) 《穿越火线》官网导航菜单</a></li>
+          <li class="list-item"><a href="#">12) 《百度风云榜》TAB切换</a></li>
+          <li class="list-item"><a href="#">13) IBM官网导航条效果</a></li>
+          <li class="list-item"><a href="#">14) 面试题-动态生成表格</a></li>
+        </ul>
+      </div>
+      <div class="lesson">
+        <h2 class="title">项目实例 (4)</h2>
+        <ul class="list">
+          <li class="list-item"><a href="#">1) 眼镜在线试戴</a></li>
+          <li class="list-item"><a href="#">2) 日历组件</a></li>
+          <li class="list-item"><a href="#">3) 淘宝网-迷你登录</a></li>
+          <li class="list-item"><a href="#">4) 仿Google+ 游戏频道焦点图效果</a></li>
+        </ul>
+      </div>
+      <div class="lesson">
+        <h2 class="title">YUI实例 (2)</h2>
+        <ul class="list">
+          <li class="list-item"><a href="#">1) 淘宝旅行通用日历组件</a></li>
+          <li class="list-item"><a href="#">2) 酒店价格日历</a></li>
+        </ul>
+      </div>
+      <div class="lesson">
+        <h2 class="title">KISSY实例 (6)</h2>
+        <ul class="list">
+          <li class="list-item"><a href="#">1) KISSY版-酒店价格日历</a></li>
+          <li class="list-item"><a href="#">2) KISSY版-图片浏览组件</a></li>
+          <li class="list-item"><a href="#">3) 酒店地图交通与周边</a></li>
+          <li class="list-item"><a href="#">4) 多SKU酒店价格中心</a></li>
+          <li class="list-item"><a href="#">5) 多SKU门票价格中心</a></li>
+          <li class="list-item"><a href="#">6) 新版-多SKU门票价格中心</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

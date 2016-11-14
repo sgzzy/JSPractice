@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>简易倒计时</title>
+    <style>
+    body,div{margin:0;padding:0;}
+    body{color:#fff;font:16px/1.5 \5fae\8f6f\96c5\9ed1;}
+    #countdown{width:300px;text-align:center;background:#1a1a1a;margin:10px auto;padding:20px 0;}
+    input{border:0;width:283px;height:50px;cursor:pointer;margin-top:20px;background: #fb852b; }
+    input.cancel{background: #36fb6f;}
+    span{color:#000;width:80px;line-height:2;background:#fbfbfb;border:2px solid #b4b4b4;margin:0 10px;padding:0 10px;}
+    </style>
+    <script>
+      window.onload = function (){
+        var times = document.getElementsByTagName("span");
+        var btns = document.getElementsByTagName("input");
+        var timer = null;
+        function format(time){
+          return time.toString().replace(/^(\d)$/, "0$1");
+        }
+        function updateTime(){
+          var oRemain = parseInt(format(times[0].innerHTML)) * 6000 + parseInt(format(times[1].innerHTML)) * 100 + parseInt(format(times[2].innerHTML));
+          oRemain--;
+          if (oRemain <= 0) {
+            clearInterval(timer);
+            return ;
+          }
+          times[0].innerHTML = format(parseInt(oRemain / 6000));
+          oRemain %= 6000;
+          console.log(oRemain);
+          times[1].innerHTML = format(parseInt(oRemain / 100));
+          oRemain %= 100;
+          console.log(oRemain / 100);
+          console.log(oRemain);
+          times[2].innerHTML = format(parseInt(oRemain));
+        }
+        btns[0].onclick = function (){
+          this.className == "" ?   (timer = setInterval(updateTime,10), updateTime()):(clearInterval(timer));
+          this.className = this.className == "" ? "cancel" : "";
+        };
+        btns[1].onclick = function (){
+          times[0].innerHTML = "01";
+          times[1].innerHTML = "40";
+          times[2].innerHTML = "00";
+          clearInterval(timer);
+        };
+      };
+    </script>
+    </head>
+  <body>
+    <div id="countdown">
+      <span>01</span>分钟<span>40</span>秒<span>00</span>毫秒
+      <input type="button" value="启动" />
+      <input type="button" value="重置" />
+    </div>
+
+  </body>
+</html>
