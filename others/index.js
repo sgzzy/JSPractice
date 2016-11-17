@@ -1,6 +1,14 @@
 /**
  * Created by Administrator on 2016/11/14.
  */
+require.config({
+    paths : {
+      "node" : "getnode",
+      "css" : "getcss",
+      "util" : "eventUtil"
+    }
+  }
+);
 window.onload = function (){
   var click = document.getElementsByClassName("lesson");
   var list = document.getElementsByClassName("list");
@@ -34,7 +42,7 @@ window.onload = function (){
             height -= 29;
             css.css(target, "height", height);
           }, 500);
-        }, 1000);
+        }, 500);
       } else if (active[0] && !active[1]) {
         height = 29 * len1 + 29;
         css.css(target, "height", height);

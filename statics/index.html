@@ -24,6 +24,7 @@
       }
       .demo .lesson {
         background: #99cc00;
+        width: 350px;
         border-top: 1px solid #ffffff;
         overflow: hidden;
       }
@@ -48,10 +49,10 @@
         height: 0;
         overflow: hidden;
         font-size: 14px;
-        -webkit-transition: height .5s linear; -moz-transition: height .5s linear; -o-transition: height .5s linear; transition: height .5s linear;
+        /*-webkit-transition: height .5s linear; -moz-transition: height .5s linear; -o-transition: height .5s linear; transition: height .5s linear;*/
       }
       .demo .lesson.active .list {
-        -webkit-transition: height .5s linear; -moz-transition: height .5s linear; -o-transition: height .5s linear; transition: height .5s linear;
+        /*-webkit-transition: height .5s linear; -moz-transition: height .5s linear; -o-transition: height .5s linear; transition: height .5s linear;*/
         background-color: #77ccff;
       }
       .demo .lesson .list .list-item {
@@ -61,10 +62,7 @@
         line-height: 2em;
       }
     </style>
-    <script type="text/javascript" src="getnode.js"></script>
-    <script type="text/javascript" src="getcss.js"></script>
-    <script type="text/javascript" src="eventUtil.js"></script>
-    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="../assets/js/require.js" data-main="../assets/js/index.js" ></script>
   </head>
   <body>
     <div class="demo">

@@ -2,7 +2,7 @@
  * Created by Administrator on 2016/11/14.
  */
 var EventUtil = {
-  addHadler: function (element, type, handler){
+  addHandler: function (element, type, handler){
     if (element.addEventListener) {
       element.addEventListener(type, handler, false);
     } else if (element.attachEvent) {

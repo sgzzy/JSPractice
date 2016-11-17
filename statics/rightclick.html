@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Right Click</title>
+    <style>
+      ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+      .intro {
+        text-align: center;
+      }
+      .panel {
+        display: none;
+        position: absolute;
+        font-size: 12px;
+        background: #f0f0f0;
+        padding: 1px;
+        border: 1px solid #a3a3a3;
+        width: 150px;
+        z-index: 0;
+      }
+      .sub1, .sub2 {
+        display: none;
+        position: relative;
+        top: -2em;
+      }
+    /*  .sub1 {
+        z-index:1;
+      }
+      .sub2 {
+        z-index: 2;
+      }*/
+      .panel .sub1 {
+        width: 320px;
+        left: 115px;
+      }
+      .panel  .sub1 .sub2 {
+        width: 180px;
+        left: 285px;
+      }
+      .panel > .list {
+      }
+      .panel > .list > .list-item,
+      .sub-panel > .list > .list-item {
+        margin-left: 25px;
+        border-left: 1px solid #fff;
+        padding-left: .5em;
+        line-height:2em;
+        height: 2em;
+      }
+      .list-item.sub {
+        background: url("../assets/images/arrow.png") no-repeat right 9px;
+      }
+      .panel .list-item.active {
+        margin: 0;
+        padding-left: 31px;
+        border: 1px solid #26a2ff;
+        background-color: #77ccff;
+      }
+    </style>
+    <script type="text/javascript" src="../assets/js/require.js" data-main="../assets/js/rightClick.js"></script>
+  </head>
+  <body>
+    <P class="intro">自定义右键菜单，请在页面点击右键查看效果。</P>
+    <div class="panel">
+      <ul class="list">
+        <li class="list-item"><strong>JavaScript学习</strong></li>
+        <li class="list-item sub">第一课
+          <div class="panel sub1">
+            <ul class="list">
+              <li class="list-item">网页特效原理分析</li>
+              <li class="list-item">响应用户操作</li>
+              <li class="list-item">提示框效果</li>
+              <li class="list-item">事件驱动</li>
+              <li class="list-item">元素属性操作</li>
+            </ul>
+          </div>
+        </li>
+        <li class="list-item sub">第二课
+          <div class="panel sub1 ">
+            <ul class="list">
+              <li class="list-item">改变网页背景颜色</li>
+              <li class="list-item">函数传参</li>
+              <li class="list-item">高重用性函数的编写</li>
+              <li class="list-item">126邮箱全选效果</li>
+              <li class="list-item">循环及遍历操作</li>
+            </ul>
+          </div></li>
+        <li class="list-item sub">第三课
+          <div class="panel sub1">
+            <ul class="list">
+              <li class="list-item sub">JavaScript组成
+                <div class="panel sub2">
+                  <ul class="list">
+                    <li class="list-item">ECMAScript</li>
+                    <li class="list-item">DOM</li>
+                    <li class="list-item">BOM</li>
+                    <li class="list-item">JavaScript兼容性来源</li>
+                  </ul>
+                </div>
+              </li>
+              <li class="list-item">JavaScript出现的位置、优缺点</li>
+              <li class="list-item">变量、类型、typeof、数据类型转换、变量作用域</li>
+              <li class="list-item sub">闭包
+                <div class="panel sub2">
+                  <ul class="list">
+                    <li class="list-item">什么是闭包</li>
+                    <li class="list-item">简单应用</li>
+                    <li class="list-item">闭包缺点</li>
+                  </ul>
+                </div>
+              </li>
+              <li class="list-item">运算符</li>
+              <li class="list-item">程序流程控制</li>
+              <li class="list-item sub">定时器的使用
+                <div class="panel sub2">
+                  <ul class="list">
+                    <li class="list-item">setInterval</li>
+                    <li class="list-item">setTimeout</li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div></li>
+      </ul>
+    </div>
+  </body>
+</html>
