@@ -25,6 +25,7 @@ define(function (){
       ret = parseInt(ret);
     }
     if (arguments.length === 2) {
+      console.log(ret);
       return ret;
     }
     if (arguments.length == 3) {
