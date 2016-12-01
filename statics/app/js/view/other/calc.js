@@ -7,9 +7,9 @@ var text = document.getElementsByClassName('f-text')[0],
     formula = document.getElementById('formula'),
     a = document.getElementsByTagName('a');
 var len = a.length,
-    i = 0,
-    operator = [],//存储运算符
-    number = [];//存储从outcome转换过来的数值
+    i = 0;
+    // operator = [],//存储运算符
+    // number = [];//存储从outcome转换过来的数值
 text.value = '0';
 function calc(){
   for (; i < len; i++)
@@ -39,9 +39,11 @@ function click(event){
     case '/' :
     case '%' :
       inputOperator(char);
+      point = false;
       break;
     case '=' ://判断是否有运算符，如没有则直接输出所打印数字，若有则计算后再输出
       calculate();
+      point = false;
       break;
     case '.' :
       inputPoint(char);
@@ -89,20 +91,37 @@ function clear(){
   formula.value = '';
 }
 function inputOperator(char){
+  if(equal) {
+    equal = false;
+  }
   if (isOperator(text.value)) {
-    console.log(text.value);
     text.value = char;
     formula.value = formula.value.substr(0, formula.value.length - 1);
     formula.value += char;
-    operator[operator.length - 1] = char;
+    // operator[operator.length - 1] = char;
   } else {
     formula.value += text.value;
-    number.push(parseFloat(text.value));
+    // number.push(parseFloat(text.value));
     text.value = char;
     formula.value += char;
-    operator.push(char);
+    // operator.push(char);
   }
 }
+function  calculate(){
+  if(!isOperator(text.value)) {
+    formula.value += text.value;
+  } else {
+    formula.value = formula.value.substr(0, formula.value.length - 1);
+  }
+  var str = formula.value;
+  formula.value = '';
+  point = false;
+  equal = true;
+  var result = new Function('return ' + str);
+  text.value = result();
+
+}
+/*
 function calculate(){
   if(!isOperator(text.value)) {
     number.push(parseFloat(text.value));
@@ -169,3 +188,4 @@ function calculate(){
     }
   }
 }
+*/

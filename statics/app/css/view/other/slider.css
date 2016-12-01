@@ -1,0 +1,80 @@
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.slider-box {
+  width: 100%;
+  height: 600px;
+  position: relative;
+  overflow: hidden;
+}
+.slider-content {
+  width: 1920px;
+  height: 600px;
+  position: absolute;
+  left: 50%;
+  margin-left: -960px;
+}
+.slider-list {
+  position: absolute;
+  width: 1920px;
+  height:3600px;
+  top: 0;
+  left: 0;
+  font-size: 0;
+}
+.slider-list-item {
+  display: inline-block;
+  vertical-align: top;
+}
+.slider-list .slider-list-item img {
+  width: 1920px;
+  height: 600px;
+}
+.pre, .next {
+  display: block;
+  position: absolute;
+  width: 50px;
+  height: 200px;
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+  top: 50%;
+  margin-top: -150px;
+}
+.pre:hover, .next:hover {
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+.pre {
+  left: 20px;
+  background: #000 url(../../../images/slider-arrow.png) no-repeat -102px center;
+}
+.next {
+  right: 20px;
+  background: #000 url(../../../images/slider-arrow.png) no-repeat -42px center;
+}
+.slider-trigger {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  bottom: 30px;
+}
+.slider-trigger .trigger-item {
+  margin-right: 5px;
+  display: inline-block;
+  vertical-align: top;
+  width: 16px;
+  height: 16px;
+  font-size: 0;
+  border-radius: 50%;
+  background: #000;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+  cursor: pointer;
+}
+.slider-trigger .trigger-item:hover, .trigger-item.active {
+  background: #fff;
+  opacity: 1;
+  filter: alpha(opacity=100);
+}

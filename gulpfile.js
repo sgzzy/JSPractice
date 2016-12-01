@@ -3,13 +3,10 @@
  */
 
 'use strict';
-
-// 强制打开彩色控制台
-process.env.DEBUG_COLORS = 'true';
 // 开启 DEBUG 开关
+process.env.DEBUG_FD = '1';
+process.env.DEBUG_COLORS = 'true';
 process.env.DEBUG = 'gulp-css,gulp-cmd';
-// 关闭 DEBUG 开关
-//process.env.DEBUG = 'false';
 
 var path = require('path');
 var join = path.join;
@@ -35,7 +32,8 @@ var alias = {
   'node': 'base/node/1.0.0/node',
   'tween': 'base/tween/1.0.0/Tween',
   'util': 'base/util/1.0.0/util',
-  'motion': 'common/motion/1.0.0/motion'
+  'motion': 'common/motion/1.0.0/motion',
+  'slider':'util/slider/1.0.0/slide'
 };
 // bookmark
 var bookmark = Date.now();
@@ -166,9 +164,10 @@ function watch(glob, options, callabck) {
   var watcher = chokidar.watch(glob, options);
   // bing event
   if (callabck) {
-    watcher.on('all', function (){
-      console.log(arguments);
-      callabck.apply(watcher, arguments);
+    watcher.on('all', function(event, path) {
+      if (path && !/___jb_tmp___$/.test(path)) {
+        callabck.apply(this, arguments);
+      }
     });
   }
 
