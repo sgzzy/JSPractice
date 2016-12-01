@@ -1,0 +1,23 @@
+
+div,
+h2,
+p {
+  margin: 0;
+  padding: 0;
+}
+#box {
+  width: 100px;
+  height: 100px;
+  background: #fef4eb;
+  position: absolute;
+  padding: 5px;
+  margin: 50px;
+  border: 1px solid #f60;
+}
+#box .title {
+  height: 25px;
+  background: #f60;
+}
+h2:hover {
+  cursor: move;
+}

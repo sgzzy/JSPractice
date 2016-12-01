@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Drag</title>
+    <link rel="stylesheet" type="text/css" href="../statics/product/css/base/base.css">
+    <link rel="stylesheet" type="text/css" href="../statics/product/css/view/other/drag.css">
+    <script type="text/javascript" src="../statics/product/loader/sea.js"></script>
+    <script>
+      (function() {
+        var lastTime = 0;
+        var vendors = ['ms', 'moz', 'webkit', 'o'];
+        for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+          window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
+          window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
+        }
+        if (!window.requestAnimationFrame) window.requestAnimationFrame = function(callback, element) {
+          var currTime = new Date().getTime();
+          var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+          var id = window.setTimeout(function() {
+            callback(currTime + timeToCall);
+          }, timeToCall);
+          lastTime = currTime + timeToCall;
+          return id;
+        };
+        if (!window.cancelAnimationFrame) window.cancelAnimationFrame = function(id) {
+          clearTimeout(id);
+        };
+      }());
+    </script>
+    <script type="text/javascript">
+      seajs.config({ base: '../statics/product/js' });
+      seajs.use('../statics/product/js/view/other/drag');
+    </script>
+  </head>
+  <body>
+    <p>拖放状态：<span>未开始</span></p>
+    <div id="box">
+      <h2 class="title"></h2>
+    </div>
+  </body>
+</html>
