@@ -10,8 +10,7 @@ var len = a.length,
     i = 0,
     operator = [],//存储运算符
     number = [];//存储从outcome转换过来的数值
-text.value = '0'; //
-
+text.value = '0';
 function calc(){
   for (; i < len; i++)
     util.addHandler(a[i], 'click', click)
@@ -59,7 +58,7 @@ function isOperator(a){
 var equal = false;
 function inputNumber(char){
   if (equal) {
-    clear();
+    formula.value = text.value;
     text.value = char;
     equal = false;
   } else if (text.value == '0' || isOperator(text.value)) {
@@ -71,9 +70,10 @@ function inputNumber(char){
 var point = false;
 function inputPoint(char){
   if (equal) {
-    clear();
+    formula.value = '';
     text.value = char;
     point = true;
+    equal = false;
   }
   if (!point) {
     text.value += char;
