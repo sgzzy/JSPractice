@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Calculateor</title>
+    <link rel="stylesheet" type="text/css" href="../statics/product/css/base/base.css">
+    <link rel="stylesheet" type="text/css" href="../statics/product/css/view/other/calc.css">
+    <script type="text/javascript" src="../statics/product/loader/sea.js"></script>
+    <script type="text/javascript">
+      seajs.config({ base: '../statics/product/js' });
+      seajs.use('../statics/product/js/view/other/calc');
+    </script>
+  </head>
+  <body>
+    <div id="calc">
+      <p>By - Ferris QQ:21314130</p>
+      <input class="f-text" type="text" readonly="readonly" maxlength="9" value="0" />
+      <ul>
+        <li class="btn-1"><a href="javascript:void(0)">c</a></li>
+        <li class="btn-1"><a href="javascript:void(0)">%</a></li>
+        <li class="btn-1"><a href="javascript:void(0)">/</a></li>
+        <li class="btn-1"><a href="javascript:void(0)">*</a></li>
+        <li><a href="javascript:void(0)">7</a></li>
+        <li><a href="javascript:void(0)">8</a></li>
+        <li><a href="javascript:void(0)">9</a></li>
+        <li class="btn-1"><a href="javascript:void(0)">-</a></li>
+        <li><a href="javascript:void(0)">4</a></li>
+        <li><a href="javascript:void(0)">5</a></li>
+        <li><a href="javascript:void(0)">6</a></li>
+        <li class="btn-1"><a href="javascript:void(0)">+</a></li>
+        <li><a href="javascript:void(0)">1</a></li>
+        <li><a href="javascript:void(0)">2</a></li>
+        <li><a href="javascript:void(0)">3</a></li>
+        <li class="btn-2"><a href="javascript:void(0)">=</a></li>
+        <li class="btn-3"><a href="javascript:void(0)">0</a></li>
+        <li><a href="javascript:void(0)">.</a></li>
+      </ul>
+      <input id="formula" type="text" readonly="readonly" value="" />
+    </div>
+  </body>
+</html>

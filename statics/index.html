@@ -3,66 +3,35 @@
   <head>
     <meta charset="UTF-8">
     <title>JSPractice</title>
-    <style>
-      ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-      a {
-        color: #ffffff;
-        text-decoration: none;
-      }
-      .demo {
-        font-size: 15px;
-        color: #fff;
-        margin: 0 auto;
-        padding: 5px;
-        width: 350px;
-        border: 15px solid #eeeeee;
-        border-radius: 10px;
-      }
-      .demo .lesson {
-        background: #99cc00;
-        width: 350px;
-        border-top: 1px solid #ffffff;
-        overflow: hidden;
-      }
-      .demo .lesson.active {
-      }
-      .demo .lesson:first-child {
-        border-top: none;
-      }
-      .demo .lesson .title {
-        cursor: pointer;
-        padding-left: 1em;
-        font-size: 15px;
-        margin: 0;
-        width: 350px;
-        height: 2em;
-        line-height:2em;
-      }
-      .demo .lesson.active .title {
-        background: #0099ff;
-      }
-      .demo .lesson .list {
-        height: 0;
-        overflow: hidden;
-        font-size: 14px;
-        /*-webkit-transition: height .5s linear; -moz-transition: height .5s linear; -o-transition: height .5s linear; transition: height .5s linear;*/
-      }
-      .demo .lesson.active .list {
-        /*-webkit-transition: height .5s linear; -moz-transition: height .5s linear; -o-transition: height .5s linear; transition: height .5s linear;*/
-        background-color: #77ccff;
-      }
-      .demo .lesson .list .list-item {
-        padding-left: 15px;
-        border-top: 1px solid #ffffff;
-        height: 2em;
-        line-height: 2em;
-      }
-    </style>
-    <script type="text/javascript" src="../assets/js/require.js" data-main="../assets/js/index.js" ></script>
+    <link rel="stylesheet" type="text/css" href="../statics/product/css/base/base.css">
+    <link rel="stylesheet" type="text/css" href="../statics/product/css/view/home/index.css">
+    <script type="text/javascript" src="../statics/product/loader/sea.js"></script>
+    <script>
+      (function() {
+        var lastTime = 0;
+        var vendors = ['ms', 'moz', 'webkit', 'o'];
+        for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+          window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
+          window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
+        }
+        if (!window.requestAnimationFrame) window.requestAnimationFrame = function(callback, element) {
+          var currTime = new Date().getTime();
+          var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+          var id = window.setTimeout(function() {
+            callback(currTime + timeToCall);
+          }, timeToCall);
+          lastTime = currTime + timeToCall;
+          return id;
+        };
+        if (!window.cancelAnimationFrame) window.cancelAnimationFrame = function(id) {
+          clearTimeout(id);
+        };
+      }());
+    </script>
+    <script type="text/javascript">
+      seajs.config({ base: '../statics/product/js' });
+      seajs.use('../statics/product/js/view/home/index');
+    </script>
   </head>
   <body>
     <div class="demo">
@@ -103,7 +72,7 @@
           <li class="list-item"><a href="#">4) 输入两个数字，比较大小</a></li>
           <li class="list-item"><a href="#">5) 页面加载后累加，自加1</a></li>
           <li class="list-item"><a href="#">6) 判断数字是否为两位数</a></li>
-          <li class="list-item"><a href="#">7) 网页计算器</a></li>
+          <li class="list-item"><a href="calc.html">7) 网页计算器</a></li>
           <li class="list-item"><a href="#">8) 简易网页时钟</a></li>
           <li class="list-item"><a href="#">9) 倒计时时钟（100秒）</a></li>
         </ul>
@@ -148,14 +117,14 @@
         <ul class="list">
           <li class="list-item"><a href="#">1) 自动轮播广告（缓冲效果）</a></li>
           <li class="list-item"><a href="#">2) 图片切换（Loading效果）</a></li>
-          <li class="list-item"><a href="#">3) 移动效果（按轨迹移动）</a></li>
+          <li class="list-item"><a href="moveto.html">3) 移动效果（按轨迹移动）</a></li>
         </ul>
       </div>
       <div class="lesson">
         <h2 class="title">第八课 (4)</h2>
         <ul class="list">
           <li class="list-item"><a href="#">1) iPhone手机解锁效果</a></li>
-          <li class="list-item"><a href="#">2) 自定义滚动条</a></li>
+          <li class="list-item"><a href="mouseScroll.html">2) 自定义滚动条</a></li>
           <li class="list-item"><a href="#">3) 拖拽一Clone</a></li>
           <li class="list-item"><a href="#">4) 拖拽并可以改变大小</a></li>
         </ul>

@@ -1,0 +1,46 @@
+.demo {
+  font-size: 15px;
+  color: #fff;
+  margin: 0 auto;
+  padding: 5px;
+  width: 350px;
+  border: 15px solid #eeeeee;
+  border-radius: 10px;
+}
+.demo .lesson {
+  background: #99cc00;
+  width: 350px;
+  border-top: 1px solid #ffffff;
+  overflow: hidden;
+}
+.demo .lesson.active {
+}
+.demo .lesson:first-child {
+  border-top: none;
+}
+.demo .lesson .title {
+  cursor: pointer;
+  padding-left: 1em;
+  font-size: 15px;
+  margin: 0;
+  width: 350px;
+  height: 2em;
+  line-height:2em;
+}
+.demo .lesson.active .title {
+  background: #0099ff;
+}
+.demo .lesson .list {
+  height: 0;
+  overflow: hidden;
+  font-size: 14px;
+}
+.demo .lesson.active .list {
+  background-color: #77ccff;
+}
+.demo .lesson .list .list-item {
+  padding-left: 15px;
+  border-top: 1px solid #ffffff;
+  height: 2em;
+  line-height: 2em;
+}
