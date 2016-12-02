@@ -77,7 +77,7 @@ EventUtil.prototype.getButton = function (event){
 };
 //get mouse scroll delta
 EventUtil.prototype.getWheelDelta = function (event){
-  return event.wheelDelta ? event.wheelDelta/120 : -event.detail/3;
+  return event.wheelDelta ? event.wheelDelta/120 : -event. detail/3;
 };
 //keyboard events
 EventUtil.prototype.getKeyCode = function (event){

@@ -10,8 +10,9 @@ p {
   height: 100px;
   background: #fef4eb;
   position: absolute;
+  left: 100px;
+  top: 100px;
   padding: 5px;
-  margin: 50px;
   border: 1px solid #f60;
 }
 #box .title {
