@@ -28,21 +28,18 @@
           }
           times[0].innerHTML = format(parseInt(oRemain / 6000));
           oRemain %= 6000;
-          console.log(oRemain);
           times[1].innerHTML = format(parseInt(oRemain / 100));
           oRemain %= 100;
-          console.log(oRemain / 100);
-          console.log(oRemain);
           times[2].innerHTML = format(parseInt(oRemain));
         }
         btns[0].onclick = function (){
-          this.className == "" ?   (timer = setInterval(updateTime,10), updateTime()):(clearInterval(timer));
+          this.className == "" ?   (timer = setInterval(updateTime,10)):(clearInterval(timer));
           this.className = this.className == "" ? "cancel" : "";
         };
         btns[1].onclick = function (){
           times[0].innerHTML = "01";
           times[1].innerHTML = "40";
-          times[2].innerHTML = "00";
+          times[2].innerHTML = "000";
           clearInterval(timer);
         };
       };

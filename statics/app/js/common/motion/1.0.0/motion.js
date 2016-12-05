@@ -3,39 +3,52 @@
  */
 var node = require('node');
 var tween = require('tween');
-exports.open = function (target, disp, height, result, time, pro){
+exports.open = function (target, height, result, endtime, pro){
   var timer = null;
+  var startTime;
 
-  function start(){
-    var value = Math.floor(tween.Elastic.easeOut(disp, height, result, time));
-    node.css(target, pro, value);
-    if (disp <= time) {
+  function start(time){
+    if (timer === null) {
+      startTime = time;
+    }
+
+    time = parseFloat(time - startTime);
+    var value = Math.floor(tween.Elastic.easeOut(time, height, result, endtime));
+
+    if (time <= endtime) {
       timer = requestAnimationFrame(start);
-    } else if (disp > time) {
+    } else if (time > endtime) {
+      value = result + height;
       cancelAnimationFrame(timer);
     }
-    disp += 10;
+
+    node.css(target, pro, value);
   }
 
-  timer = requestAnimationFrame(start);
+  requestAnimationFrame(start);
 };
-exports.close = function (target, time, pro){
+exports.close = function (target, endtime, pro){
   var height = node.css(target, pro);
   var result = -height;
-  var disp = 0;
   var timer = null;
+  var startTime;
 
-  function end(){
-    var value = Math.floor(tween.Linear(disp, height, result, time));
-    node.css(target, pro, value);
-    if (disp < time) {
+  function end(time){
+    if (timer === null) {
+      startTime = time;
+    }
+    time = parseFloat(time - startTime);
+    var value = Math.floor(tween.Linear(time, height, result, endtime));
+    if (time < endtime) {
       timer = requestAnimationFrame(end);
-    } else if (disp >= time) {
+    } else{
+      value = height + result;
       cancelAnimationFrame(timer);
       target.parentNode.className = "lesson";
     }
-    disp += 10;
+    node.css(target, pro, value);
+
   }
 
-  timer = requestAnimationFrame(end);
+  requestAnimationFrame(end);
 };
