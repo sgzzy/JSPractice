@@ -78,7 +78,7 @@ util.addHandler(document, 'keydown', function (event){//按左右键控制滚动
 function sync(){
   var left = node.css(bar, 'left');
   var value = (left / lenD) * lenUp;
-  node.css(list, 'left', -value);
+  node.css(list, 'left', node.toPixe(-value));
 }
 function click(event){
   event = util.getEvent(event);
@@ -133,13 +133,13 @@ function moveTo(target, time){
 
   function start(){
     var value = Math.ceil(Tween.Linear(disp, left, target - left, time));
-    node.css(bar, 'left', value);
+    node.css(bar, 'left', node.toPixe(value));
     sync();
     if (disp < time) {
       timer = requestAnimationFrame(start);
     } else if (disp >= time) {
       cancelAnimationFrame(timer);
-      node.css(bar, 'left', target);
+      node.css(bar, 'left', node.toPixe(target));
     }
     disp += 10;
     isStop();

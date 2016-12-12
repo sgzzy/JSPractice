@@ -42,7 +42,7 @@ Slider.prototype = {
       var value = node.css(oThis, pro);
       var iSpeed = (iTarget - value) / 10;
       iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
-      node.css(oThis, pro, (value + iSpeed));
+      node.css(oThis, pro, node.toPixe(value + iSpeed));
       if (node.css(oThis, pro) != iTarget) {
         oThis.timer = requestAnimationFrame(start);
       } else if (node.css(oThis, pro) == iTarget) {
@@ -84,11 +84,11 @@ Slider.prototype = {
     if (this.loop) {
       if (this.sliderItem.length == this.index + 1 && iTarget == uLength) {//在从第一张进行上一张动画后再进行下一张动画
         this.slider.removeChild(this.sliderItem[0]);
-        node.css(this.slider, pro, (this.index - 1) * uLength);
+        node.css(this.slider, pro, node.toPixe((this.index - 1) * uLength));
         iTarget = this.index * uLength;
       }
       if (iTarget == this.index * uLength) {//在最后一张上进行下一张的动画
-        node.css(this.slider, unit, -(this.index + 1) * uLength);
+        node.css(this.slider, unit, node.toPixe(-(this.index + 1) * uLength));
         var item = document.createElement("li");
         item = this.sliderItem[0].cloneNode(true);
         this.slider.appendChild(item);
@@ -111,21 +111,21 @@ Slider.prototype = {
     if (this.loop) {//多次快速点击，left最终始终为0
       if (iTarget == uLength && this.sliderItem.length == this.index + 1) {//在第一张进行上一张动画后的又一次上一张动画
         this.slider.removeChild(this.sliderItem[0]);
-        node.css(this.slider, pro, -(this.index - 1) * uLength);
+        node.css(this.slider, pro, node.toPixe(-(this.index - 1) * uLength));
         iTarget = (this.index - 2) * (-uLength);
       }
       if (iTarget == -uLength * (this.index - 1) && this.sliderItem.length == this.index + 1) {//在最后一张上next后又prev
         this.slider.removeChild(this.sliderItem[this.index]);
-        node.css(this.slider, pro, 0);
+        node.css(this.slider, pro, node.toPixe(0));
         iTarget = uLength;
       }
       if (iTarget == uLength && this.sliderItem.length == this.index) {//在第一张进行上一张动画
         iTarget = 0;
-        node.css(this.slider, unit, (this.index + 1) * uLength);
+        node.css(this.slider, unit, node.toPixe((this.index + 1) * uLength));
         var item = document.createElement("li");
         item = this.sliderItem[this.index - 1].cloneNode(true);
         this.slider.insertBefore(item, this.sliderItem[0]);
-        node.css(this.slider, pro, -uLength);
+        node.css(this.slider, pro, node.toPixe(-uLength));
       }
     }
     this.move(iTarget);

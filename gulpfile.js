@@ -33,7 +33,9 @@ var alias = {
   'tween': 'base/tween/1.0.0/Tween',
   'util': 'base/util/1.0.0/util',
   'motion': 'common/motion/1.0.0/motion',
-  'slider': 'util/slider/1.0.0/slide',
+  'slider': 'util/slide/1.0.0/slide',
+  'drawColor': 'util/colorBoard/1.0.0/colorBoard',
+  'youa': 'util/youa/1.0.0/youa',
   'utils': 'common/utils/1.0.0/utils',
   'Events': 'common/events/1.0.0/events'
 };

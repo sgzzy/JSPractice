@@ -21,14 +21,14 @@ a,a:link {
   height: 84px;
   text-align: right;
   font: 700 50px/84px Arial;
-  background: url(../../../images/inputBg.jpg) repeat-x;
+  background: url(../../../images/calc/inputBg.jpg) repeat-x;
   padding: 0 5px;
 }
 #calc ul {
   position: relative;
   overflow: hidden;
   zoom: 1;
-  background: url(../../../images/bg.jpg);
+  background: url(../../../images/calc/bg.jpg);
   padding: 0 0 17px 8px;
 }
 #calc ul li {
@@ -44,7 +44,7 @@ a,a:link {
   font-size: 18px;
   line-height: 41px;
   text-align: center;
-  background: url(../../../images/btn.png) no-repeat;
+  background: url(../../../images/calc/btn.png) no-repeat;
 }
 #calc ul li a:hover {
   background-position: -63px 0;

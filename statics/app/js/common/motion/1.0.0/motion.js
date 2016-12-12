@@ -22,7 +22,7 @@ exports.open = function (target, height, result, endtime, pro){
       cancelAnimationFrame(timer);
     }
 
-    node.css(target, pro, value);
+    node.css(target, pro, node.toPixe(value));
   }
 
   requestAnimationFrame(start);
@@ -46,7 +46,7 @@ exports.close = function (target, endtime, pro){
       cancelAnimationFrame(timer);
       target.parentNode.className = "lesson";
     }
-    node.css(target, pro, value);
+    node.css(target, pro, node.toPixe(value));
 
   }
 

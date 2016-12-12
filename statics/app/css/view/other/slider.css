@@ -48,11 +48,11 @@ ul {
 }
 .pre {
   left: 20px;
-  background: #000 url(../../../images/slider-arrow.png) no-repeat -102px center;
+  background: #000 url(../../../images/slider/slider-arrow.png) no-repeat -102px center;
 }
 .next {
   right: 20px;
-  background: #000 url(../../../images/slider-arrow.png) no-repeat -42px center;
+  background: #000 url(../../../images/slider/slider-arrow.png) no-repeat -42px center;
 }
 .slider-trigger {
   position: absolute;

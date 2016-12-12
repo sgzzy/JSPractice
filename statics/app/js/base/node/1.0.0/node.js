@@ -110,7 +110,7 @@
       css = getComputedStyle(elem, null);
       ret = css[attr];
     } else if (document.documentElement.currentStyle) {
-      css = this.node.currentStyle;
+      css = elem.currentStyle;
       ret = css[attr];
     }
 
@@ -127,9 +127,9 @@
       return ret;
     }
     if (arguments.length == 3) {
-      if(rnum.test(value)) {
-        value = value + 'px';
-      }
       elem.style.cssText += "; " + attr + " : " + value;
     }
+  };
+  Node.prototype.toPixe = function (value){
+    return value+'px';
   };

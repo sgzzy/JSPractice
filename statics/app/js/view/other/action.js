@@ -24,12 +24,12 @@ function open (target, disp, height, result, time, pro){
 
   function start(){
     var value = Math.floor(Tween.Linear(disp, height, result, time));
-    node.css(target, pro, value);
+    node.css(target, pro, node.toPixe(value));
     if (disp <= time) {
       timer = requestAnimationFrame(start);
     } else if (disp > time) {
       cancelAnimationFrame(timer);
-      node.css(action, 'background', ' url(./product/images/1.gif) no-repeat');
+      node.css(action, 'background', ' url(./product/images/moveto/1.gif) no-repeat');
     }
     disp += 10;
   }
@@ -45,7 +45,7 @@ function click(event){
     disp = 0,
     proX = "left",
     proY = "top";
-  node.css(action, 'background', ' url(./product/images/2.gif) no-repeat');
+  node.css(action, 'background', ' url(./product/images/moveto/2.gif) no-repeat');
   open(action, disp, startX, endX-startX, time, proX);
   open(action, disp, startY, endY-startY, time, proY);
 }
@@ -64,15 +64,15 @@ function move (event){
 function up (event){
   event = util.getEvent(event);
   document.mousemove = null;
-  node.css(action, 'background', ' url(./product/images/2.gif) no-repeat');
+  node.css(action, 'background', ' url(./product/images/moveto/2.gif) no-repeat');
   var i = 0,
     len = iPos.length,
     disp = 0,
     time = 30,
     timer = null;
   timer = setInterval(function (){
-    node.css(action,"left",iPos[i+1].x);
-    node.css(action,"top",iPos[i+1].y);
+    node.css(action,"left",node.toPixe(iPos[i+1].x));
+    node.css(action,"top",node.toPixe(iPos[i+1].y));
     i++;
     if(i < len-1) {
       console.log(i);

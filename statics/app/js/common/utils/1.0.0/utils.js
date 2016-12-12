@@ -12,10 +12,12 @@
  */
 var AP = Array.prototype;
 var OP = Object.prototype;
+var SP = String.prototype;
 var APFilter = AP.filter;
 var APIndexOf = AP.indexOf;
 var APForEach = AP.forEach;
 var OPToString = OP.toString;
+var APFrom = AP.from;
 
 /**
  *type
@@ -143,5 +145,139 @@ exports.forEach = APForEach ? function (array, iterator, context){
 
   for (var i = 0, length = array.length; i < length; i++) {
     iterator.call(array, array[i], i, array);
+  }
+};
+
+// Production steps of ECMA-262, Edition 6, 22.1.2.1
+// Reference: https://people.mozilla.org/~jorendorff/es6-draft.html#sec-array.from
+exports.from = APFrom ? APFrom : (function () {
+    var toStr = Object.prototype.toString;
+    var isCallable = function (fn) {
+      return typeof fn === 'function' || toStr.call(fn) === '[object Function]';
+    };
+    var toInteger = function (value) {
+      var number = Number(value);
+      if (isNaN(number)) { return 0; }
+      if (number === 0 || !isFinite(number)) { return number; }
+      return (number > 0 ? 1 : -1) * Math.floor(Math.abs(number));
+    };
+    var maxSafeInteger = Math.pow(2, 53) - 1;
+    var toLength = function (value) {
+      var len = toInteger(value);
+      return Math.min(Math.max(len, 0), maxSafeInteger);
+    };
+
+    // The length property of the from method is 1.
+    return function from(arrayLike/*, mapFn, thisArg */) {
+      // 1. Let C be the this value.
+      var C = this;
+
+      // 2. Let items be ToObject(arrayLike).
+      var items = Object(arrayLike);
+
+      // 3. ReturnIfAbrupt(items).
+      if (arrayLike == null) {
+        throw new TypeError("Array.from requires an array-like object - not null or undefined");
+      }
+
+      // 4. If mapfn is undefined, then let mapping be false.
+      var mapFn = arguments.length > 1 ? arguments[1] : void undefined;
+      var T;
+      if (typeof mapFn !== 'undefined') {
+        // 5. else
+        // 5. a If IsCallable(mapfn) is false, throw a TypeError exception.
+        if (!isCallable(mapFn)) {
+          throw new TypeError('Array.from: when provided, the second argument must be a function');
+        }
+
+        // 5. b. If thisArg was supplied, let T be thisArg; else let T be undefined.
+        if (arguments.length > 2) {
+          T = arguments[2];
+        }
+      }
+
+      // 10. Let lenValue be Get(items, "length").
+      // 11. Let len be ToLength(lenValue).
+      var len = toLength(items.length);
+
+      // 13. If IsConstructor(C) is true, then
+      // 13. a. Let A be the result of calling the [[Construct]] internal method of C with an argument list containing the single item len.
+      // 14. a. Else, Let A be ArrayCreate(len).
+      var A = isCallable(C) ? Object(new C(len)) : new Array(len);
+
+      // 16. Let k be 0.
+      var k = 0;
+      // 17. Repeat, while k < len… (also steps a - h)
+      var kValue;
+      while (k < len) {
+        kValue = items[k];
+        if (mapFn) {
+          A[k] = typeof T === 'undefined' ? mapFn(kValue, k) : mapFn.call(T, kValue, k);
+        } else {
+          A[k] = kValue;
+        }
+        k += 1;
+      }
+      // 18. Let putStatus be Put(A, "length", len, true).
+      A.length = len;
+      // 20. Return A.
+      return A;
+    };
+}());
+/**
+ * colorHex
+ * @returns
+ */
+SP.colorHex = function (){
+  var that = this;
+  var regR = /^(rgb|RGB)/;
+  var regI = /(?:\(|\)|rgb|RGB)*/g;
+  var hex='#';
+  var i;
+  if(regR.test(that)) {
+    var rgbN = that.replace(regI,'').split(',');
+    for(i=0;i < rgbN.length; i++) {
+      var num = Number(rgbN[i]);
+      if(num < 0 || num >255) {
+        throw new RangeError('The RGB number is out of range.');
+      } else {
+        var strHex = num.toString(16);
+        strHex = num < 16 ? '0'+strHex : strHex;
+      }
+      hex += strHex;
+    }
+    if(hex.length != 7) {
+      throw new RangeError('The RGB numbers is not three.');
+    } else {
+      return hex;
+    }
+  }
+};
+/**
+ * colorRgb
+ * @returns
+ */
+SP.colorRgb = function (){
+  var that = this.toLowerCase();
+  var reg = /^#([0-9a-f]{3}|[0-9a-f]{6})$/;
+  var rgb = 'RGB(';
+  var i;
+  if(that && reg.test(that)) {
+    var hexN = that.replace('#','');
+    if(hexN.length == 3) {
+      hexN = hexN.split('');
+      for(i=0;i<3;i++) {
+        hexN[i] += hexN[i];
+      }
+    } else if(hexN.length == 6) {
+      hexN = hexN.match(/[0-9a-f]{2}/g);
+    }
+    for(i = 0; i < 3; i++) {
+      hexN[i] = parseInt('0x'+hexN[i],10);
+    }
+    rgb += hexN[0] + ', ' + hexN[1] + ', ' + hexN[2] + ')';
+    return rgb;
+  } else {
+    throw new Error('The colorHex\'s  format is warn.');
   }
 };

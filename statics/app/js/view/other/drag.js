@@ -36,8 +36,8 @@ Drag.prototype = {
       iTop = iTop < 0 ? 0 : iTop;
       iTop = iTop > height ? height : iTop;
     }
-    node.css(this.drag, 'left', iLeft);
-    node.css(this.drag, 'top', iTop);
+    node.css(this.drag, 'left', node.toPixe(iLeft));
+    node.css(this.drag, 'top', node.toPixe(iTop));
   },
   stopDrag : function (event){
     event = util.getEvent(event);

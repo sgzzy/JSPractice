@@ -57,7 +57,7 @@ body {
   top: 0; width: 28px;
   height: 19px;
   cursor: pointer;
-  background: url(../../../images/03.gif) no-repeat;
+  background: url(../../../images/mousesscroll/03.gif) no-repeat;
 }
 .scrollBar .barL {
   left: 0;
@@ -93,14 +93,14 @@ body {
   width: 150px;
   height: 15px;
   cursor: e-resize;
-  background: url(../../../images/01.gif) repeat-x;
+  background: url(../../../images/mousesscroll/01.gif) repeat-x;
 }
 .scrollBar .bar .l, .scrollBar .bar .r {
   position: absolute;
   top: 0;
   width: 6px;
   height: 15px;
-  background: url(../../../images/02.gif) no-repeat;
+  background: url(../../../images/mousesscroll/02.gif) no-repeat;
 }
 .scrollBar .bar .l {
   left: -6px;
