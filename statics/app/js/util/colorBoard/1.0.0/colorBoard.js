@@ -6,7 +6,7 @@ function ColorBoard(obj){
   context.ctx = obj.ctx;
   context.width = obj.width;
   context.height = obj.height;
-  context.imageData = context.ctx.createImageData(context.width, context.height);
+  context.imageData = context.ctx.createImageData(context.width,context.height);
 }
 
 module.exports = ColorBoard;
@@ -32,30 +32,45 @@ ColorBoard.prototype = {
    */
   drawImage: function (){
     var context = this;
-    var imageData = context.imageData;
-    var i, j, x, y, pixel;
-    var value = [];
-    for (i = 0; i < 100; i++) {
+    var i, j, pixel, rgb;
+    var radius = context.width/200;
+    var angle = -Math.PI/180;
+    for (i = 100; i >= 0; i--) {
       for (j = 0; j < 360; j++) {
-        pixel = context.hsvToRgb(j, i / 100, 1);
-        context.setData(imageData, j, i, [
-          Math.ceil(pixel.r),
-          Math.ceil(pixel.g),
-          Math.ceil(pixel.b),
-          255
-        ]);
+        pixel = context.hsvToRgb(j,i/100,1);
+        rgb = 'RGB(' + Math.floor(pixel.r) + ',' + Math.floor(pixel.g) + ',' + Math.floor(pixel.b) + ')';
+        if(i == 0) {
+          context.drawColor(1,j*angle,rgb);
+        } else {
+          context.drawColor(i*radius,j*angle,rgb);
+        }
       }
     }
-    context.ctx.putImageData(imageData, 0, 0);
+  },
+  /**
+   *
+   * @param r
+   * @param startAngle
+   * @param rgb
+   */
+  drawColor: function (r,startAngle, rgb){
+    var context = this;
+    var ctx = context.ctx;
+    var radius = context.width/2;
+    ctx.beginPath();
+    ctx.moveTo(radius, radius);
+    ctx.fillStyle = rgb;
+    ctx.arc(radius, radius, r, startAngle, startAngle-Math.PI/180, true );
+    ctx.fill();
+    ctx.closePath();
   },
   drawLight: function (h, s){
     var context = this;
     var imageData = context.imageData;
     var i, j, pixel;
-    var value = [];
-    for (i = 0; i < 100; i++) {
+    for (i = 0; i < 360; i++) {
       for (j = 0; j < 40; j++) {
-        pixel = context.hsvToRgb(h, s / 100, (100 - i) / 100);
+        pixel = context.hsvToRgb(h, s, (360 - i) / 360);
         context.setData(imageData, j, i, [
           Math.ceil(pixel.r),
           Math.ceil(pixel.g),
@@ -189,6 +204,14 @@ ColorBoard.prototype = {
       throw new Error('The colorHex\'s  format is warn.');
     }
   },
+
+  /**
+   *
+   * @param r
+   * @param g
+   * @param b
+   * @returns {{h: *, s: *, v: (number|*)}}
+   */
   rgbToHsv: function (r,g,b){
     r = parseFloat(r+1)/256;
     g= parseFloat(g+1)/256;
@@ -221,5 +244,9 @@ ColorBoard.prototype = {
       s: s,
       v: v
     }
+  },
+  toHSV: function (x,y,r,v){
+    var h,s;
+    h = Math.floor(Math.asin(x/r)*360/(2*Math.PI));
   }
 };

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<link rel="stylesheet" type="text/css" href="../statics/product/css/base/base.css">-->
+    <!--<link rel="stylesheet" href="../statics/product/css/view/other/colorBoard.css">-->
+    <script type="text/javascript" src="../statics/product/loader/sea.js"></script>
+    <script type="text/javascript">
+      seajs.config({ base: '../statics/product/js' });
+      seajs.use('../statics/product/js/view/other/colorBoard');
+    </script>
+  </head>
+  <body>
+    <canvas id="can" width="300" height="300"></canvas>
+    <canvas id="lightBar" width="40" height="100"></canvas>
+    <div class="show-color">
+      <input class="rgb-color" type="text" placeholder="RGB(255,255,255)">
+      <input class="hex-color" type="text" placeholder="#ffffff">
+    </div>
+  </body>
+</html>

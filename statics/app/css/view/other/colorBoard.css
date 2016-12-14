@@ -1,4 +1,59 @@
+html {
+  background-color: #272822;
+}
+
+input[type = 'text'], select {
+  background: #3c3f41;
+  text-align: center;
+  width: 2.5em;
+  padding: .2em;
+  border: 1px solid #646464;
+  margin:0 1.5em 0 .5em;
+}
+select {
+  width: 4.5em;
+}
+input.hex-value {
+  width: 4em;
+}
+
 #lightBar {
-  margin: 50px 0 0 50px;
-  border: 2px solid #19fffb;
+  border: 1px solid ;
+  user-select: none;
+}
+
+.color-board {
+  width: 430px;
+  height: 500px;
+  margin: 200px auto;
+  padding: 10px;
+  background: #3c3f41;
+}
+
+.color-board .color-choose {
+  width: 420px;
+  height: 30px;
+  border: 1px solid #ffffff;
+  background: #ffffff;
+}
+
+.color-board .color-show {
+  margin-top: 10px;
+}
+
+.color-board #colorBoard {
+  position: relative;
+  width: 360px;
+  height: 360px;
+  margin: 10px;
+  display: inline-block;
+}
+#colorBoard .colorBox {
+  width: 2px;
+  height: 2px;
+  border: 1px solid #000;
+  background: #ffffff;
+  left: 50%;
+  top: 50%;
+  position: absolute;
 }

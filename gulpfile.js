@@ -34,6 +34,7 @@ var alias = {
   'util': 'base/util/1.0.0/util',
   'motion': 'common/motion/1.0.0/motion',
   'slider': 'util/slide/1.0.0/slide',
+  'dialog': 'util/dialog/1.0.0/dialog',
   'drawColor': 'util/colorBoard/1.0.0/colorBoard',
   'youa': 'util/youa/1.0.0/youa',
   'utils': 'common/utils/1.0.0/utils',

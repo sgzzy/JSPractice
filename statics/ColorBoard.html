@@ -12,8 +12,25 @@
     </script>
   </head>
   <body>
-    <canvas id="can" width="360" height="100"></canvas>
-    <canvas id="lightBar" width="40" height="100"></canvas>
+    <div class="color-board">
+      <div class="color-choose"></div>
+      <div class="color-show">
+        <strong class="r" title="Red">R:</strong><input type="text" value="255">
+        <strong class="g" title="Green">G:</strong><input type="text" value="255">
+        <strong class="b" title="Blue">B:</strong><input type="text" value="255">
+        <select>
+           <option id="rgb">RGB</option>
+           <option id="hsv">HSV</option>
+        </select>
+        <strong class="hex" title="Hex">#</strong><input type="text" class="hex-value" value="FFFFFF">
+
+      </div>
+      <div id="colorBoard">
+        <img ondragstart="return false;" style="user-select: none;" src="../statics/product/images/colorBoard/HSColor360.png" width="360" height="360" draggable="false">
+        <div class="colorBox"></div>
+      </div>
+      <canvas id="lightBar" width="40" height="360" style="user-select: none;"></canvas>
+    </div>
     <div class="show-color">
       <input class="rgb-color" type="text" placeholder="RGB(255,255,255)">
       <input class="hex-color" type="text" placeholder="#ffffff">
