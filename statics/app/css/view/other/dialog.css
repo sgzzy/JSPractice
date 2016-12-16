@@ -1,7 +1,7 @@
-.dialog {
-  width: 500px;
-  height: 300px;
-  display: block;
+@import "../../base/icon.css";
+.ui-dialog {
+  width: 400px;
+  height: 250px;
   border: 1px solid #cccccc;
   -webkit-box-shadow: 1px 1px 2px #ccc; -moz-box-shadow: 1px 1px 2px #ccc; box-shadow: 1px 1px 2px #ccc;
   position: absolute;
@@ -9,14 +9,13 @@
   top: 50%;
   margin: -150px 0 0 -250px;
   z-index: 1;
-  background: #ffffff;
-  text-align: center;
-  vertical-align: middle;
-}
-.dialog.hide {
+  outline: none;
   display: none;
+  background: #ffffff;
+  vertical-align: middle;
+  -webkit-transition: all .5s ease; -moz-transition: all .5s ease;  -o-transition: all .5s ease; transition: all 1s ease;
 }
-.shade {
+.dialog-shade {
   position: absolute;
   top: 0;
   right: 0;
@@ -26,4 +25,53 @@
   filter: alpha(opacity = 60);
   z-index: 0;
   background: #fbfbfb;
+  tab-index: 0;
+}
+.tab-lock {
+  width: 0;
+  height: 0;
+  tab-index: 0;
+}
+.dialog-title h2{
+  font-size: 15px;
+  padding: .5em 0 .5em 1em;
+  height: 2em;
+  line-height: 2em;
+  border-bottom: 1px solid #f0f0f0;
+}
+.icon-close {
+  padding: 2px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #008fe2;
+  float: right;
+  display: block;
+}
+.dialog-content {
+  padding: 10px;
+}
+.dialog-foot {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}
+.dialog-ok, .dialog-cancel {
+  float: right;
+  margin-right: 2em;
+  padding: .5em 1em;
+  background: #0e7fd4;
+  color: #fff;
+  border: 1px solid #2d78f4;
+  outline: none;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-transition: border .25s ease-in-out, box-shadow .25s ease-in-out;
+  -moz-transition: border .25s ease-in-out, box-shadow .25s ease-in-out;
+  -webkit-transition: border .25s ease-in-out, box-shadow .25s ease-in-out;
+  transition: border .25s ease-in-out, box-shadow .25s ease-in-out;
+}
+.dialog-ok:focus, .dialog-cancel:focus {
+  background: #046ab6;
+  border: 1px solid #2d78f4;
 }
