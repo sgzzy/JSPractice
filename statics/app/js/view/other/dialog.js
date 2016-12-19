@@ -9,7 +9,17 @@ Util.addHandler(btn, 'click', function (){
   var dialog = new Dialog({
     title: {title: 'title', content: 'hhh'},
     content: 'World!',
-    model: true
+    model: true,
+    position: true
   })
     .show();
 });
+/*Util.addHandler(document, 'keydown', function (event){
+  console.log(1);
+  event = Util.getEvent(event);
+  var keyCode = event.keyCode;
+  console.log(keyCode);
+  if (keyCode == 9) {
+    console.log(document.activeElement);
+  }
+});*/

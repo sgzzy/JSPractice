@@ -7,6 +7,8 @@ var Util = require('util');
 //创建一个初始弹窗
 var dialog = document.createElement('div');
 dialog.className = 'ui-dialog';
+var dialogContent = document.createElement('div');
+dialogContent.className = 'dialog-content';
 var title = document.createElement('div');
 title.className = 'dialog-title fn-clear';
 var titleContent = document.createElement('h2');
@@ -15,7 +17,7 @@ closeIcon.className = 'icon-close';
 title.appendChild(closeIcon);
 title.appendChild(titleContent);
 var content = document.createElement('div');
-content.className = 'dialog-content';
+content.className = 'dialog-main';
 var foot = document.createElement('div');
 foot.className = 'dialog-foot fn-clear';
 var ok = document.createElement('input');
@@ -23,19 +25,25 @@ ok.className = 'dialog-ok';
 ok.type = 'button';
 ok.value = '确定';
 var cancel = document.createElement('input');
-cancel.className ='dialog-cancel';
+cancel.className = 'dialog-cancel';
 cancel.type = 'button';
 cancel.value = '取消';
-foot.appendChild(cancel);
 foot.appendChild(ok);
-dialog.appendChild(title);
-dialog.appendChild(content);
-dialog.appendChild(foot);
-
+foot.appendChild(cancel);
+dialogContent.appendChild(title);
+dialogContent.appendChild(content);
+dialogContent.appendChild(foot);
+dialog.appendChild(dialogContent);
 
 var shade = document.createElement('div');
+var tabIndex = document.createElement('div');
+tabIndex.className = 'dialog-tab';
 shade.className = 'dialog-shade';
-
+shade.setAttribute('tabindex', '0');
+tabIndex.setAttribute('tabindex', '0');
+tabIndex.innerHTML = 'adf';
+dialog.appendChild(tabIndex);
+dialog.setAttribute('tabindex', '-1');
 /**
  *
  * @param obj
@@ -52,11 +60,11 @@ function Dialog(obj){
   context.model = obj.model || false;
   context.remove = obj.remove || false;
   context.tabLock = obj.tabLock || true;
+  context.position = obj.position || false;
 
   context.dialogs = [];
 
   context.defaultDialog(context.obj);
-
 
 }
 
@@ -87,6 +95,7 @@ Dialog.prototype = {
     context._content(context.content);
 
 
+
     context.dialog = dialog.cloneNode(true);
     context.ok = context.dialog.getElementsByClassName('dialog-ok')[0];
     context.cancel = context.dialog.getElementsByClassName('dialog-cancel')[0];
@@ -95,11 +104,20 @@ Dialog.prototype = {
 
     context.dialogs.push(context.dialog);
 
+    if (context.position) {
+      var left = node.css(context.dialog, 'left');
+      var top = node.css(context.dialog, 'top');
+      var randomLeft = Math.floor(Math.random()*left/100);
+      var randomTop = Math.floor(Math.random()*top/100);
+      node.css(context.dialog, 'left', randomLeft);
+      node.css(context.dialog, 'top', randomTop);
+    }
+
     Util.addHandler(context.ok, 'click', function (){
       context._ok();
     });
     Util.addHandler(context.cancel, 'click', function (){
-     context._cancel();
+      context._cancel();
     });
     Util.addHandler(context.close, 'click', function (){
       context._close();
@@ -131,7 +149,7 @@ Dialog.prototype = {
    * @param main
    * @returns {Dialog}
    */
-  _content: function (main) {
+  _content: function (main){
     var context = this;
     var type = Object.prototype.toString.call(main);
     if (type == '[object String]') {
@@ -140,29 +158,36 @@ Dialog.prototype = {
     return context;
   },
 
+  _width: function (value){
+    var context = this;
+    node.css(context.dialog, 'width', value+'px');
+  },
+  _height: function (value){
+    var context = this;
+    node.css(context.dialog, 'height', value + 'px');
+  },
+  _position: function (left, right){
+    var context = this;
+
+  },
   /**
    * 弹出弹窗
    *
    * @returns {Dialog}
    */
-  show: function () {
+  show: function (){
     var context = this;
     if (context.model) {
       node.css(context.shade, 'z-index', context.shadeZIndex);
-      context.shade.setAttribute('tab-index', '0');
       document.body.appendChild(context.shade);
+      document.body.appendChild(context.dialog);
+    } else {
+      document.body.appendChild(context.dialog);
     }
-    document.body.appendChild(context.dialog);
+    context.dialog.focus();
     node.css(context.dialog, 'z-index', context.shadeZIndex);
     node.css(context.dialog, 'display', 'block');
-    if (context.tabLock) {
-      context.dialog.setAttribute('tab-index', '-1');
-      context.dialog.focus();
-      Util.addHandler(context.dialog, 'blur', function (){
-        console.log(1);
-        document.activeElement !== context.dialog && context.dialog.focus();
-      });
-    }
+    context.lockTab();
     return context;
   },
 
@@ -189,7 +214,7 @@ Dialog.prototype = {
         node.css(context.shade, 'z-index', context.shadeZIndex);
         context.dialogs.push(context.dialog);
       }
-    } else if(context.remove) {
+    } else if (context.remove) {
       document.body.removeChild(context.dialog);
       context.dialogs.pop();
       context.dialog = context.dialogs.pop();
@@ -201,21 +226,50 @@ Dialog.prototype = {
     }
     return context;
   },
-  _ok: function () {
+
+  /**
+   * 确定按钮
+   * @returns {*}
+   * @private
+   */
+  _ok: function (){
     var context = this;
     // alert('The work has done!');
     return context._create();
   },
-  _cancel: function () {
+
+  /**
+   * 取消按钮
+   * @returns {*|Dialog}
+   * @private
+   */
+  _cancel: function (){
     var context = this;
     return context._close();
   },
+
+  /**
+   * 再生成一个弹窗
+   * @returns {*}
+   * @private
+   */
   _create: function (){
     var context = this;
     context = context.defaultDialog(context.obj);
     context.shadeZIndex++;
     node.css(context.dialog, 'z-index', context.shadeZIndex);
     return context.show();
-  }
+  },
 
+  lockTab: function (){
+    var context = this;
+    var tab = context.dialog.getElementsByClassName('dialog-tab')[0];
+    var ok = context.dialog.getElementsByClassName('dialog-ok')[0];
+    Util.addHandler(tab, "focus", function (){
+      context.shade.focus();
+    });
+    Util.addHandler(context.shade, 'focus', function (){
+      context.dialog.focus();
+    })
+  }
 };

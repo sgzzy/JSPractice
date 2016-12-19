@@ -1,7 +1,5 @@
 @import "../../base/icon.css";
 .ui-dialog {
-  width: 400px;
-  height: 250px;
   border: 1px solid #cccccc;
   -webkit-box-shadow: 1px 1px 2px #ccc; -moz-box-shadow: 1px 1px 2px #ccc; box-shadow: 1px 1px 2px #ccc;
   position: absolute;
@@ -15,6 +13,10 @@
   vertical-align: middle;
   -webkit-transition: all .5s ease; -moz-transition: all .5s ease;  -o-transition: all .5s ease; transition: all 1s ease;
 }
+.dialog-content {
+  width: 400px;
+  height: 250px;
+}
 .dialog-shade {
   position: absolute;
   top: 0;
@@ -25,12 +27,12 @@
   filter: alpha(opacity = 60);
   z-index: 0;
   background: #fbfbfb;
-  tab-index: 0;
 }
-.tab-lock {
+.dialog-tab {
   width: 0;
   height: 0;
-  tab-index: 0;
+  overflow: hidden;
+  position: absolute;
 }
 .dialog-title h2{
   font-size: 15px;
@@ -43,20 +45,20 @@
   padding: 2px;
   font-size: 14px;
   font-weight: bold;
-  color: #008fe2;
+  color: #0e7fd4;
   float: right;
   display: block;
 }
-.dialog-content {
+.dialog-main {
   padding: 10px;
 }
 .dialog-foot {
   position: absolute;
   bottom: 10px;
   width: 100%;
+  text-align: center;
 }
-.dialog-ok, .dialog-cancel {
-  float: right;
+.dialog-ok, .dialog-cancel, .btn {
   margin-right: 2em;
   padding: .5em 1em;
   background: #0e7fd4;
@@ -71,7 +73,11 @@
   -webkit-transition: border .25s ease-in-out, box-shadow .25s ease-in-out;
   transition: border .25s ease-in-out, box-shadow .25s ease-in-out;
 }
-.dialog-ok:focus, .dialog-cancel:focus {
+.dialog-ok:focus, .dialog-cancel:focus, .btn:focus {
   background: #046ab6;
   border: 1px solid #2d78f4;
+}
+
+input[type = 'checkbox'] {
+  vertical-align: middle;
 }
