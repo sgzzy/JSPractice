@@ -5,7 +5,7 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  margin: -150px 0 0 -250px;
+  margin: -125px 0 0 -200px;
   z-index: 1;
   outline: none;
   display: none;
@@ -58,7 +58,7 @@
   width: 100%;
   text-align: center;
 }
-.dialog-ok, .dialog-cancel, .btn {
+.dialog-ok, .dialog-cancel, .btn, .no-model {
   margin-right: 2em;
   padding: .5em 1em;
   background: #0e7fd4;
@@ -73,11 +73,16 @@
   -webkit-transition: border .25s ease-in-out, box-shadow .25s ease-in-out;
   transition: border .25s ease-in-out, box-shadow .25s ease-in-out;
 }
-.dialog-ok:focus, .dialog-cancel:focus, .btn:focus {
+.dialog-ok:focus, .dialog-cancel:focus, .btn:focus, .no-model:focus {
   background: #046ab6;
   border: 1px solid #2d78f4;
 }
-
+.no-model {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 9999;
+}
 input[type = 'checkbox'] {
   vertical-align: middle;
 }

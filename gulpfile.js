@@ -29,12 +29,14 @@ var switchStream = require('switch-stream');
 // alias
 var alias = {
   'import-style': 'util/import-style/1.0.0/import-style',
+  'jquery': 'base/jquery/1.11.3/jquery',
   'node': 'base/node/1.0.0/node',
   'tween': 'base/tween/1.0.0/Tween',
   'util': 'base/util/1.0.0/util',
   'motion': 'common/motion/1.0.0/motion',
   'slider': 'util/slide/1.0.0/slide',
   'dialog': 'util/dialog/1.0.0/dialog',
+  'shade': 'util/shade/1.0.0/shade',
   'drawColor': 'util/colorBoard/1.0.0/colorBoard',
   'youa': 'util/youa/1.0.0/youa',
   'utils': 'common/utils/1.0.0/utils',
