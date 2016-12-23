@@ -24,7 +24,7 @@ module.exports = Events;
 // Set prototype
 Events.prototype = {
   /**
-   * Bind callback tos event
+   * Bind callback to event
    * @param event
    * @param callback
    * @param context
